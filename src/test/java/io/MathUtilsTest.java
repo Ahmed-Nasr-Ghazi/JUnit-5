@@ -6,10 +6,13 @@ import org.junit.jupiter.api.Test;
 
 class MathUtilsTest {
 
+	int cachedValue = 0;
+	
 	@Test
 	void testAdd() {
 		MathUtils mathUtils = new MathUtils();
 		int expected = 2;
+		cachedValue = 10;
 		int actual = mathUtils.add(1, 1);
 		assertEquals(expected, actual, "this method should add the two numbers");
 	}
