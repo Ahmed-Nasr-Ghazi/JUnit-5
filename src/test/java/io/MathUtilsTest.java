@@ -2,6 +2,7 @@ package io;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +13,11 @@ class MathUtilsTest {
 	@BeforeEach
 	void init() {
 		mathUtils = new MathUtils();
+	}
+	
+	@AfterEach
+	void cleanUp() {
+		System.out.println("Cleaning Up");
 	}
 	
 	@Test
