@@ -1,13 +1,19 @@
 package io;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 
+@TestInstance(Lifecycle.PER_CLASS)
 class MathUtilsTest {
 
 	MathUtils mathUtils;
@@ -29,11 +35,12 @@ class MathUtilsTest {
 	}
 	
 	@AfterAll
-	static void agter() {
+	static void after() {
 		System.out.println("after all methods");
 	}
 	
 	@Test
+	@DisplayName("Testing Add")
 	void testAdd() {
 		int expected = 2;
 		int actual = mathUtils.add(1, 1);
@@ -55,7 +62,19 @@ class MathUtilsTest {
 		assertEquals(314.1592653589793, expectedArea, "this method should return right circle area");
 	}
 	
+	@Test
+	@Disabled
+	void tdd() {
+		fail("tdd method failed");
+	}
 	
+	@Test
+	void serverRequest() {
+		boolean isServerUp = true;
+		
+		assumeTrue(isServerUp);
+		fail("tdd method failed");
+	}
 	
 }
 
