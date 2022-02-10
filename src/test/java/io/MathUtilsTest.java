@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -17,6 +18,26 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 class MathUtilsTest {
 
 	MathUtils mathUtils;
+	
+	@Nested
+	@DisplayName("Add Method")
+	class TestAdd{
+		
+		@Test
+		@DisplayName("Testing Add negative")
+		void testAddNegative() {
+			assertEquals(9, mathUtils.add(1, 1), "this method should add the two numbers");
+
+		}
+		
+		@Test
+		@DisplayName("Testing Add positive")
+		void testAddPositive() {
+			assertEquals(2, mathUtils.add(1, 1), "this method should add the two numbers");
+		}
+		
+	}
+	
 	
 	@BeforeAll
 	static void before() {
@@ -39,13 +60,7 @@ class MathUtilsTest {
 		System.out.println("after all methods");
 	}
 	
-	@Test
-	@DisplayName("Testing Add")
-	void testAdd() {
-		int expected = 2;
-		int actual = mathUtils.add(1, 1);
-		assertEquals(expected, actual, "this method should add the two numbers");
-	}
+	
 
 	@Test
 	void testDevide() {
