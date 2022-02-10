@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -64,7 +66,10 @@ class MathUtilsTest {
 	
 
 	@Test
-	void testDevide() {
+	@DisplayName("Test Devide Method")
+	@RepeatedTest(3)
+	void testDevide(RepetitionInfo info) {
+		System.out.println();
 		assertThrows(ArithmeticException.class, () -> mathUtils.divide(1, 0), "divide by zero should throw");
 		/*
 		double expectedResult = mathUtils.divide(10,0);
