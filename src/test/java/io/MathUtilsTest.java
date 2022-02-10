@@ -14,13 +14,18 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestReporter;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 @TestInstance(Lifecycle.PER_CLASS)
 class MathUtilsTest {
 
 	MathUtils mathUtils;
+	TestInfo testInfo;
+	TestReporter testReporter;
+	
 	
 	@Nested
 	@DisplayName("Add Method")
@@ -45,13 +50,25 @@ class MathUtilsTest {
 	
 	@BeforeAll
 	static void before() {
+		
+		System.out.println("Before all methods");
+	}
+	
+	@BeforeEach
+	void init() {
+		
 		System.out.println("Before every method");
+
+	
 	}
 	
 	
 	@BeforeEach
-	void init() {
+	void init(TestInfo testInfo, TestReporter testReporter) {
+		this.testInfo = testInfo;
+		this.testReporter = testReporter;
 		mathUtils = new MathUtils();
+		testReporter.publishEntry(testInfo.getDisplayName() + " /" + testInfo.getTestClass() +  " /" + testInfo.getTags());
 	}
 	
 	@AfterEach
@@ -88,6 +105,8 @@ class MathUtilsTest {
 	@DisplayName("Testing Multiply Method")
 	@Tag("Math")
 	void testMultiply() {
+		System.out.println(  );
+		testReporter.publishEntry(testInfo.getDisplayName() + " /" + testInfo.getTestClass() +  " /" + testInfo.getTags());
 		assertAll(
 				() -> assertEquals(4, mathUtils.multiply(2, 2)),
 				() -> assertEquals(0, mathUtils.multiply(2, 0)),
