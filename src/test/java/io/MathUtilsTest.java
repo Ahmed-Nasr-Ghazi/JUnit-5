@@ -26,14 +26,15 @@ class MathUtilsTest {
 		@Test
 		@DisplayName("Testing Add negative")
 		void testAddNegative() {
-			assertEquals(9, mathUtils.add(1, 1), "this method should add the two numbers");
+			assertEquals(9, mathUtils.add(1, 1), () -> "this method should add the two numbers"); //supplier for assert messages
+																								  // will only be called when failure 
 
 		}
 		
 		@Test
 		@DisplayName("Testing Add positive")
 		void testAddPositive() {
-			assertEquals(2, mathUtils.add(1, 1), "this method should add the two numbers");
+			assertEquals(2, mathUtils.add(1, 1), () -> "this method should add the two numbers"); //supplier for assert messages
 		}
 		
 	}
