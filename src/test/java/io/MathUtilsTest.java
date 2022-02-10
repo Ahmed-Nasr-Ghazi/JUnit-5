@@ -63,6 +63,16 @@ class MathUtilsTest {
 	}
 	
 	@Test
+	@DisplayName("Testing Multiply Method")
+	void testMultiply() {
+		assertAll(
+				() -> assertEquals(4, mathUtils.multiply(2, 2)),
+				() -> assertEquals(0, mathUtils.multiply(2, 0)),
+				() -> assertEquals(-2, mathUtils.multiply(2, -1)) 
+			);
+	}
+	
+	
 	@Disabled
 	void tdd() {
 		fail("tdd method failed");
@@ -73,7 +83,7 @@ class MathUtilsTest {
 		boolean isServerUp = true;
 		
 		assumeTrue(isServerUp);
-		fail("tdd method failed");
+		//fail("tdd method failed");
 	}
 	
 }
