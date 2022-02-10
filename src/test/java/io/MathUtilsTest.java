@@ -12,6 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -23,14 +24,14 @@ class MathUtilsTest {
 	
 	@Nested
 	@DisplayName("Add Method")
+	@Tag("Math")
 	class TestAdd{
 		
 		@Test
 		@DisplayName("Testing Add negative")
 		void testAddNegative() {
-			assertEquals(9, mathUtils.add(1, 1), () -> "this method should add the two numbers"); //supplier for assert messages
+			assertEquals(2, mathUtils.add(1, 1), () -> "this method should add the two numbers"); //supplier for assert messages
 																								  // will only be called when failure 
-
 		}
 		
 		@Test
@@ -64,8 +65,6 @@ class MathUtilsTest {
 	}
 	
 	
-
-	@Test
 	@DisplayName("Test Devide Method")
 	@RepeatedTest(3)
 	void testDevide(RepetitionInfo info) {
@@ -78,6 +77,8 @@ class MathUtilsTest {
 	}
 	
 	@Test
+	@DisplayName("Testing Circle Method")
+	@Tag("Circle")
 	void testComputeCircleArea() {
 		double expectedArea = mathUtils.computeCircleArea(10);
 		assertEquals(314.1592653589793, expectedArea, "this method should return right circle area");
@@ -85,6 +86,7 @@ class MathUtilsTest {
 	
 	@Test
 	@DisplayName("Testing Multiply Method")
+	@Tag("Math")
 	void testMultiply() {
 		assertAll(
 				() -> assertEquals(4, mathUtils.multiply(2, 2)),
@@ -100,6 +102,7 @@ class MathUtilsTest {
 	}
 	
 	@Test
+	@Tag("Math")
 	void serverRequest() {
 		boolean isServerUp = true;
 		
